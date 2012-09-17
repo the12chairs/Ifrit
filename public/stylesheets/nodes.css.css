@@ -1,0 +1,31 @@
+/* line 6, ../../app/assets/stylesheets/nodes.css.scss */
+* {
+  margin: 0.2%;
+  padding: 0.2%;
+}
+
+/* line 13, ../../app/assets/stylesheets/nodes.css.scss */
+body {
+  background-color: #eee;
+}
+
+/* line 17, ../../app/assets/stylesheets/nodes.css.scss */
+h1 {
+  color: #555;
+}
+
+/* line 21, ../../app/assets/stylesheets/nodes.css.scss */
+textarea {
+  width: 28%;
+  height: 180px;
+}
+
+/* line 28, ../../app/assets/stylesheets/nodes.css.scss */
+.picture {
+  float: left;
+}
+
+/* line 32, ../../app/assets/stylesheets/nodes.css.scss */
+.body_text {
+  float: right;
+}

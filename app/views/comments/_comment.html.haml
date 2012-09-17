@@ -1,0 +1,17 @@
+
+%table
+%div.comment 
+  %p &gt;&gt;
+  %table
+    %tr
+      %td= comment.head
+    %tr
+      %td
+        %div.picture= link_to( (image_tag comment.picture_url(:thumb).to_s), comment.picture_url) if comment.picture?
+        %div= parser(comment.body)#simple_format(markdown(auto_link(comment.body)))
+  %table
+    %td= comment.number
+    %td= comment.formated_date
+
+  = #link_to 'Delete this comment', [comment.node, comment], :confirm => 'Are you sure?', :method => :delete
+%br

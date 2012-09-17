@@ -1,0 +1,24 @@
+%h1 Nodes
+
+= link_to 'New node', new_node_path
+%hr
+- @nodes.reverse.each do |node|
+  %div.thread
+    %table
+      %tr
+        %td= node.head
+      %tr
+        %td
+          %div.picture= link_to( image_tag( node.picture_url(:thumb).to_s), node.picture_url) if node.picture?
+          %div.body_text= simple_format(node.body)
+    %table
+      %td= node.id
+      %td= node.board.name
+      %td= node.created_at.strftime("%d %b %Y, %H:%M")
+      %td  Comments:
+      %td= node.comments.size
+      %td= link_to 'Reply', node
+      %td= #link_to 'Delete node', node, :confirm => 'Are you sure?', :method => :delete     
+  %hr
+%br
+= will_paginate @nodes

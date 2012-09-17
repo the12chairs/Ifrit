@@ -1,0 +1,17 @@
+@import "variables";
+
+h1{
+  margin: $margin;
+}
+
+
+.boardlist{
+  td{
+    //margin: $margin;
+    text-align: center;
+  }
+}
+
+td{
+  margin: $margin;
+}

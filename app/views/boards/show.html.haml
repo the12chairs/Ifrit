@@ -1,0 +1,19 @@
+%p#notice= notice
+
+
+
+%h2
+  %center= @board.name
+  %center= @board.post_counter
+%br
+%h2 Nodes:
+
+= render @nodes #reverse в контроллере
+
+New node:
+
+= render 'form'
+
+= will_paginate @nodes
+
+= link_to 'Back', boards_path
