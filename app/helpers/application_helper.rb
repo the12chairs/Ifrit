@@ -4,7 +4,6 @@ module ApplicationHelper
     "<span class='spoiler'>#{text}</span>"
   end
 
-  
   def parser(text)
     text = auto_link(text)
     text = markdown(text)

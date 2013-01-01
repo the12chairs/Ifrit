@@ -1,0 +1,97 @@
+
+$post: #ccc;
+$border: #aaa;
+$spoiler: #aaa;
+$text_open: #333;
+$quote_color: #575;
+
+body{
+  background-color: #ddd;
+
+}
+
+.spoiler{
+  color: $spoiler;
+  background-color: $spoiler;
+}
+
+.spoiler:hover{
+  color: $text_open;
+}
+
+blockquote p{
+  margin: 1%;
+  color: $quote_color;
+}
+
+.textarea {
+  height: 200px;
+  width: 400px;
+
+}
+
+.headinput{
+  width: 400px;
+}
+
+.footer{
+  font-size: 10px;
+}
+
+h2{
+  font-size: 16px;
+}
+
+h1{
+  font-size: 20px;
+}
+
+
+
+.thread{
+  margin-left: 1%;
+  //background-color: $post;
+  width: 50%;
+}
+
+.thread .head{
+  clear: both;
+}
+
+.comment .head{
+  clear: both;
+}
+
+.comment .text{
+  margin-left: 1%;
+}
+.thread .pic{
+  float: left;
+}
+
+.foot{
+  clear: both;
+}
+
+.pic{
+  margin-right: 1%;
+}
+
+.comment{
+  margin: 2%;
+  width: 48%;
+  background-color: $post;
+  border: 1px;
+  border-color: $border;
+  border-radius: 5px;
+  border-style: solid;
+  box-shadow: 10px;
+}
+
+.comment .pic{
+  float: left;
+}
+
+.comment .foot{
+  clear: both;
+}

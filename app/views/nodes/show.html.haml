@@ -1,26 +1,25 @@
 %p#notice= notice
 
+
+
+=# render :partial => 'shared/form', :locals =>{:zone => @node, :content => @node.comments} # выводит лишние пустые комменты
+
+
 %div.thread
-  %table 
-    %tr
-      %td= @node.head
-    %tr
-      %td
-        %div.picture= link_to( image_tag( @node.picture_url(:thumb).to_s), @node.picture_url) if @node.picture?
-        %div= parser(@node.body)
-  %table    
-    %td= @node.number
-    %td= @node.created_at.strftime("%d %b %Y, %H:%M")
-      
+  %div.head
+    = @node.head
+    = @node.formated_date
+    №
+    = @node.number
+  %div.pic= link_to( image_tag( @node.picture_url(:thumb).to_s), @node.picture_url) if @node.picture?
+  %div.text= parser(@node.body)   
+  %div.foot
+  //---------------
 %h2 Comments:
-
 = render @node.comments
-
 %hr
 %br
 
-New comment:
-
-= render 'comments/form'
-
+Create comment
+= render :partial => 'shared/form', :locals => {:zone => @node, :content => @node.comments}
 = link_to 'Back', board_path(@node.board)

@@ -1,15 +1,15 @@
 = form_for [@node, @node.comments.build] do |f|
-  - @node.comments.build.errors.full_messages.each do |msg|
-    = msg
-  .field
+  //- @node.comments.build.errors.full_messages.each do |msg|
+  //  = msg
+  .postform
     = f.label :head
-    = f.text_field :head
-  .field
+    = f.text_field :head, :class => 'headinput'
+  .postform
     = f.label :body
-    = f.text_area :body
-  .field
+    = f.text_area :body, :class => 'textarea'
+  .postform
     = f.label :picture
     = f.file_field :picture
     = f.hidden_field :picture_cache
-  .actions
+  .postform
     = f.submit 'Save'

@@ -1,11 +1,10 @@
 class NodesController < ApplicationController  
   # GET /nodes
   # GET /nodes.json
-  #
-  
-  layout 'nodes'
 
-  def index  
+  attr_accessor :board_list
+
+  def index
     @nodes = Node.paginate(:page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +15,7 @@ class NodesController < ApplicationController
   # GET /nodes/1
   # GET /nodes/1.json
   def show
+    @board_list = Board.all
     @node = Node.find(params[:id])
     #@node = Node.find_by_number(params[:id], params[:board_id])
     respond_to do |format|

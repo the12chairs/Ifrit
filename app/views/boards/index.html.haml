@@ -1,15 +1,12 @@
-%h1 Listing boards
+%h1
+  Welcome!
+  = audio_tag '1.mp3', :controls => true
+%br
 
-%table.boardlist
-  %tr
-    %th Name
-    %th Code
-    %th
-    %th
-
+%h2 Full list of existing forums:
+%ul.boardlist
   - @boards.each do |board|
-    %tr
-      %td= board.name
-      %td= board.code
-      %td= link_to 'Go', board 
+    %li
+      = board.name
+      = link_to "Go", board
 %br

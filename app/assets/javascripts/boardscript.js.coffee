@@ -1,0 +1,3 @@
+
+
+$(".spoiler").append(".spoiler")

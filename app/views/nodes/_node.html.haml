@@ -1,26 +1,24 @@
 %div.thread
-  %table
-    %tr
-      %td= node.head
-      %td= link_to 'Reply', node
-    %tr
-      %td
-        %div.picture= link_to( image_tag( node.picture_url(:thumb).to_s), node.picture_url) if node.picture?
-        %div=  parser(node.body)
-  %table
-    %td= node.number
-    %td= node.created_at.strftime("%d %b %Y, %H:%M")
-    %td  Total comments:
-    %td= node.comments.size
-    -#%td= link_to 'Delete node', node, :confirm => 'Are you sure?', :method => :delete
+  %div.head
+    = node.head
+    = node.formated_date
+    №
+    = node.number
+  %div.pic= link_to( image_tag( node.picture_url(:thumb).to_s), node.picture_url) if node.picture?
+  %div.text
+    = parser(node.body)
+  %div.foot
+    Total comments:
+    = node.comments.size
+    = link_to 'Reply', node
+    = #link_to 'Delete node', node, :confirm => 'Are you sure?', :method => :delete
   
   
   -# Код, выводящий последний комментарий в треде. Да, знаю, что криво >.<
-  - if(!node.comments.empty?)
-    - if(node.comments.size > 2)
-      = render node.comments[node.comments.size - 3]
-    - if(node.comments.size > 1 )
-      = render node.comments[node.comments.size - 2]
-    = render node.comments.last
+- if(!node.comments.empty?)
+  - if(node.comments.size > 2)
+    = render node.comments[node.comments.size - 3]
+  - if(node.comments.size > 1 )
+    = render node.comments[node.comments.size - 2]
+  = render node.comments.last
 %hr
-%br

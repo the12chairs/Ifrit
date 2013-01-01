@@ -2,17 +2,17 @@
 
 
 
-%h2
+%h1
   %center= @board.name
-  %center= @board.post_counter
 %br
-%h2 Nodes:
-
-= render @nodes #reverse в контроллере
 
 New node:
 
-= render 'form'
+= render :partial => 'shared/form', :locals => {:zone => @board, :content => @board.nodes}
+
+%h2 Nodes:
+
+= render @nodes #reverse в контроллере
 
 = will_paginate @nodes
 

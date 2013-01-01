@@ -1,0 +1,14 @@
+= form_for [zone, content.build ]do |f|
+  .postform
+    = f.label :head
+    = f.text_field :head, :class => "headinput"
+  .postform
+    = f.label :body
+    = f.text_area :body, :class => "textarea"
+  .postform
+    = f.label :picture
+    = f.file_field :picture
+    = f.hidden_field :picture_cache
+  .postform
+    = f.submit "Save"
+  
