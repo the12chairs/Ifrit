@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  validates :body, :presence => true
+  validates_presence_of :body, :if => "picture.blank?"
   mount_uploader :picture, PictureUploader
   belongs_to :node
   belongs_to :board
