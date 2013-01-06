@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
-  def getIp
-    getIp = request.remote_ip
+
+  before_filter :store_request
+
+  def store_request
+    Thread.current[:request] = request
   end
 
 end

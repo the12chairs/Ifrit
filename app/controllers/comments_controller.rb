@@ -44,24 +44,12 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-   @node = Node.find(params[:node_id])
-   @board = @node.board
-   @comment = @node.comments.create(params[:comment])
-   respond_to do |format|
-
-   if @comment.save
-      @comment.ip = getIp
-      @comment.formated_date = @comment.created_at.strftime("%d %b %Y, %H:%M")
-      @comment.number = @board.post_counter.to_int + 1
-      @comment.save
-    #Порядок выборки определяется датой последнего комментария. Пишем в заголвке сажу - не обновляем поле
-      if @comment.head!="sage"
-        @node.last_comment = @comment.created_at # update last_comment field in nodes table
-        @node.save
-      end
-      @board.post_counter = @comment.number
-      @board.save
-      
+    # Теперь логика в модели
+    @node = Node.find(params[:node_id])
+    @comment = @node.comments.create(params[:comment])
+    respond_to do |format|
+    
+    if @comment.save
       format.html { redirect_to node_path(@node), :notice => 'Comment was successfully created.' }
       # May be some problems
       format.json { render :json => @comment, :status => :created, :location => @comment }

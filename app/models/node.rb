@@ -1,15 +1,18 @@
 class Node < ActiveRecord::Base
-  
+  include ApplicationHelper
   validates :body, :picture, :presence => true
   
   has_many :comments, :dependent => :destroy
   belongs_to :board
   mount_uploader :picture, PictureUploader
-  
-  
-  #self.per_page = 10
-  
-  #def to_param
-  #  "#{number}"
-  #end
+  before_create{
+    |node|
+    board = Board.find(node.board_id)
+    node.ip = Thread.current[:request].remote_ip
+    node.last_comment = Time.now # != creatd_at
+    node.formated_date = Time.now.strftime("%d %b %Y, %H:%M")
+    node.number = board.post_counter + 1
+    board.post_counter += 1
+    board.save
+  }
 end

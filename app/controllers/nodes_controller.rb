@@ -48,13 +48,6 @@ class NodesController < ApplicationController
       @board = Board.find(params[:board_id])
       @node = @board.nodes.create(params[:node])
       if @node.save
-        @node.ip = getIp
-        @node.last_comment = @node.created_at
-        @node.formated_date = @node.created_at.strftime("%d %b %Y, %H:%M")
-        @node.number = @board.post_counter.to_int + 1
-        @node.save
-        @board.post_counter = @node.number
-        @board.save
         format.html { redirect_to @node, :notice => 'Node was successfully created.' }
         format.json { render :json => @node, :status => :created, :location => @node }
       else

@@ -10,5 +10,4 @@ module ApplicationHelper
     text.gsub! /%%(.+?)%%/, spoiler('\1')
     text = simple_format(text)
   end
-
 end
