@@ -3,6 +3,7 @@ class BoardsController < ApplicationController
   # GET /boards.json
   #
   attr_accessor :board_list, :board_nodes
+  $nodes_per_page = 10
   def index
     @board_list = Board.all
     @boards = Board.all
@@ -20,7 +21,7 @@ class BoardsController < ApplicationController
     @board_nodes = @board.nodes.all
     # Пагинация, аттеншн - располагание тредов по убыванию даты последнего коммента происходит здесь,
     # поэтому нефиг пирать реверс в board/show
-    @nodes = @board.nodes.paginate(:page => params[:page], :per_page => 10, :order => 'last_comment DESC')
+    @nodes = @board.nodes.paginate(:page => params[:page], :per_page => $nodes_per_page, :order => 'last_comment DESC')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @board }

@@ -2,7 +2,7 @@ class Node < ActiveRecord::Base
   include ApplicationHelper
   validates :body, :picture, :presence => true
   
-  has_many :comments, :dependent => :destroy
+  has_many :comments, :order => "id ASC", :dependent => :destroy
   belongs_to :board
   mount_uploader :picture, PictureUploader
   before_create{

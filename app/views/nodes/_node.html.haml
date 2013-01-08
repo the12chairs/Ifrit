@@ -12,13 +12,7 @@
     = node.comments.size
     = link_to 'Reply', node
     = #link_to 'Delete node', node, :confirm => 'Are you sure?', :method => :delete
-  
-  
-  -# Код, выводящий последний комментарий в треде. Да, знаю, что криво >.<
-- if(!node.comments.empty?)
-  - if(node.comments.size > 2)
-    = render node.comments[node.comments.size - 3]
-  - if(node.comments.size > 1 )
-    = render node.comments[node.comments.size - 2]
-  = render node.comments.last
+
+- $last_comments = 3
+= render node.comments.limit $last_comments
 %hr
