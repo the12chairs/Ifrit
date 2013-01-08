@@ -14,5 +14,5 @@
     = #link_to 'Delete node', node, :confirm => 'Are you sure?', :method => :delete
 
 - $last_comments = 3
-= render node.comments.limit $last_comments
+= render node.comments.order("id DESC").limit($last_comments)
 %hr
