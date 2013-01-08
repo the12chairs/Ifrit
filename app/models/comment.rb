@@ -11,7 +11,8 @@ class Comment < ActiveRecord::Base
     comment.number = board.post_counter + 1
     comment.formated_date = Time.now.strftime("%d %b %Y, %H:%M") # Не равно created_at!
     # Вероятно, стоит переделать
-    if comment.head != "sage"
+    #node.head = "HFCHFHCHFH"
+    if node.head != "sage"
       node.last_comment = Time.now #comment.created_at
       node.save
     end

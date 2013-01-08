@@ -13,6 +13,10 @@
     = link_to 'Reply', node
     = #link_to 'Delete node', node, :confirm => 'Are you sure?', :method => :delete
 
-- $last_comments = 3
-= render node.comments.order("id DESC").limit($last_comments)
+- if node.comments.size == 1
+  = render node.comments.last
+- if node.comments.size == 2
+  = render node.comments.limit(2).offset(node.comments.size - 2)
+- if node.comments.size > 2
+  = render node.comments.limit(3).offset(node.comments.size - 3)
 %hr
